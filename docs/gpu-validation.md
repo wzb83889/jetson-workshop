@@ -10,6 +10,14 @@ torch 2.12.0+cu132、torchvision 0.27.0+cu132；CUDA可用。256×256全1矩阵�
 get_arch_list未列sm_87，初始化出现except {8.7}警告。本次已测路径能运行；尚未证明所有算子、Triton或torch.compile路径可用，也不推断底层回退机制。
 ## 代码
 scripts/gpu_smoke.py 为整理版，需要在Jetson重新验收。
+
+scripts/cuda_smoke.cu 从原记录中的完整CUDA代码提取，历史输出为1048576元素逐项通过。目标设备有nvcc时：
+```bash
+mkdir -p build
+nvcc -O2 scripts/cuda_smoke.cu -o build/cuda_smoke
+./build/cuda_smoke
+```
+本次没有CUDA编译器，未重新编译或运行。
 ## 边界
 is_available=True不是完整验收，nvidia-smi的N/A也不能单独判失败。
 

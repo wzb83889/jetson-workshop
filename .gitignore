@@ -19,3 +19,4 @@ logs/
 *.mkv
 *.log
 .DS_Store
+build/

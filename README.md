@@ -10,7 +10,7 @@
 - PySide6 图片与本地视频检测界面。
 - llama.cpp CUDA、Qwen本地问答、回环API和SSH隧道。
 
-**历史逻辑已在Jetson验证；本仓库为整理版，新增参数与重构需在目标Jetson复验。** 本次维护运行环境没有Jetson GPU，不冒充硬件复验。
+**历史GPU与GUI主路径已在Jetson验证；新增参数与重构需在目标Jetson复验，维护工具也待实机验收。** GUI示例为按已有记录重建的整理版，尚未收回Jetson上的两份实际成功源码。本次归档环境没有Jetson GPU，不冒充硬件复验。
 
 ## 先看哪里
 
@@ -18,6 +18,21 @@
 2. [GPU验证](docs/gpu-validation.md) → [TensorRT导出](docs/tensorrt-export.md) → [实测结果](docs/benchmark-2026-10-17.md)。
 3. [图片GUI](docs/gui.md)、[视频GUI](docs/video-gui.md)与[桌面入口](docs/desktop-launcher.md)。
 4. [路线图](ROADMAP.md)、[贡献说明](CONTRIBUTING.md)、[归档流程](docs/knowledge-workflow.md)。
+5. [系统常规维护](docs/routine-maintenance.md)：原维护工具包的检查、计划与验证入口。
+
+## 工具索引
+
+| 位置 | 内容 |
+| --- | --- |
+| scripts/inspect_jetson.sh | 环境快照 |
+| scripts/cuda_smoke.cu、gpu_smoke.py | CUDA向量与PyTorch算子数值验证 |
+| scripts/export_yolo.py、benchmark_yolo.py | TensorRT导出和统一条件测速 |
+| scripts/download_samples.py | 官方示例下载与校验 |
+| scripts/desktop_session_check.py、install_desktop_launcher.py | 图形会话检查与桌面双击入口 |
+| scripts/restore_nvidia_shortcuts.py | 恢复缺失NVIDIA快捷方式 |
+| scripts/start_llm.sh、new_session.py | 本地LLM启动与独立复盘模板 |
+| examples/yolo_gui.py、yolo_video_gui.py | 图片与视频GUI整理版 |
+| maintenance/ | 原维护工具与离线模拟测试 |
 
 ## 可运行入口
 
