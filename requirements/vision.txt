@@ -1,0 +1,8 @@
+# 在适配JetPack的PyTorch环境中安装；先核对系统依赖
+ultralytics==8.4.179
+numpy==1.26.4
+opencv-python==4.11.0.86
+onnx==1.19.1
+PySide6==6.12.0
+# torch==2.12.0+cu132 与 torchvision==0.27.0+cu132 从官方cu132索引单独安装
+# tensorrt==10.16.2.10 由对应JetPack提供，不在此强行pip安装
