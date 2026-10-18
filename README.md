@@ -50,3 +50,7 @@ GUI默认查找 ~/jetson-lab/yolo/ 下模型，可通过 JETSON_YOLO_WORKDIR 指
 历史组合：JetPack7.2.1 / L4T39.2.1 / CUDA13.2 / TensorRT10.16.2.10 / Python3.12 / torch2.12.0+cu132 / Ultralytics8.4.179。不是所有Jetson系统的通用安装保证。CC8.7警告保留；已测算子可用不代表所有扩展可用。模型、视频、引擎及原始日志不随仓库分发。
 
 原作者代码采用MIT；Ultralytics等依赖与素材仍适用其各自许可，参见[第三方说明](THIRD_PARTY.md)。不将原始私人台账或设备凭据发布到仓库。
+
+## 存储与桌面响应
+
+[microSD 卡顿诊断与 NVMe 全系统迁移](docs/storage-migration.md)：先采样定位，再进行同版、一致性、可回退迁移。当前为待实机验证的方案。
