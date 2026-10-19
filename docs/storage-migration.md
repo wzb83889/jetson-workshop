@@ -1,7 +1,7 @@
 # microSD 卡顿诊断与 NVMe 全系统迁移
 
 session_id: 2026-10-18-sd-nvme-migration
-状态：计划；尚无本次卡顿时的设备采样，未实施迁移。
+状态：部分验证；已有两轮短时资源快照，连续取证待Jetson验收，根因未定、迁移未执行。
 适用：Jetson Orin Nano 开发套件；历史环境 JetPack 7.2.1 / L4T R39.2.1。先核实实际设备和版本。
 
 ## 先判断卡在哪里
@@ -110,3 +110,14 @@ SSD 可改善加载与存储等待，不增加内存，也不会自动修复界�
 - [Ubuntu vmstat 字段说明](https://manpages.ubuntu.com/manpages/noble/man8/vmstat.8.html)
 - [Linux PSI](https://www.kernel.org/doc/html/latest/accounting/psi.html)
 - [Qt：耗时工作与 GUI 线程](https://doc.qt.io/qt-6/threads-qobject.html)
+
+## 追加：短时采样与连续取证
+同一session追加，未实施迁移，SD瓶颈未证实。
+- 卡顿主要报告于Chrome、CherryStudio窗口与部分设置菜单；一次更新无响应后更新已经完成，缺少应用错误日志。
+- 两轮短采样均b=0，wa分别0与0%～1%；第一轮CPU空闲约91%～96%，第二轮前可用内存1.8GiB、swap=0。是否与实际卡顿严格同步尚未确认。
+- 已提供的内核片段未见mmc超时、I/O或EXT4错误。PSI接口不可用、缺少iostat。以上不能证明持续磁盘拥堵，也不能排除瞬时等待。
+- 已保存复盘报告交付jetson_watch.py与工具包，支持连续采样、现场标记、受限临时文件I/O、轮转、摘要和导出；报告18项逻辑检查及通用Linux流程通过。这是历史来源报告，本次未复跑，Jetson未验收。
+- 当前可读取来源未包含完整工具源码或VALIDATION.md；只登记待收集，仓库不生成替代脚本，不宣称已收录工具代码。
+
+## 下一步验收
+先收回实际源码及验证记录，在Jetson原负载下持续记录卡顿与恢复并导出可读日志。监控与I/O测试分开；PSI缺失正常降级，临时文件测试不触碰原数据且遵守写入预算。之后再决定是否迁移及进行同负载对照。
